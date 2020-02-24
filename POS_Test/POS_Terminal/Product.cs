@@ -11,26 +11,26 @@ namespace POS_Terminal
         private string description;
         private double price;
 
-        public Product(string name, string category, string description, double price)
-        {
-            this.Name = name;
-            this.Category = category;
-            this.Description = description;
-            this.Price = price;
-        }
-
-        public Product()
-        {
-        }
-
         public string Name { get => name; set => name = value; }
         public string Category { get => category; set => category = value; }
         public string Description { get => description; set => description = value; }
         public double Price { get => price; set => price = value; }
 
+        public Product()
+        {
+
+        }
+        public Product(string name, string category, string description, double price)
+        {
+            this.name = name;
+            this.category = category;
+            this.description = description;
+            this.price = price;
+        }
+
         public override string ToString()
         {
-            return $"Item: {name}\nCategory: {category}\nCalories: {description}\nPrice: {price}";
+            return $"\t{name,-18}\t\t{description,-30}\t{price.ToString("C"),-15}";
         }
     }
 }

@@ -7,35 +7,18 @@ namespace POS_Terminal
     public class Receipt
     {
         private Dictionary<string, int> rec = new Dictionary<string, int>();
-        private string item;
-        private int quantity;
-        private double subTotal;
-        private double tax;
-        private double grandTotal;
 
         public Receipt()
         {
             this.rec = new Dictionary<string, int>();
         }
-        public Receipt(string item, int quantity, double subTotal, double tax, double grandTotal)
-        {
-            this.item = item;
-            this.quantity = quantity;
-            this.subTotal = subTotal;
-            this.tax = tax;
-            this.grandTotal = grandTotal;
-        }
 
-        public string Item { get => item; set => item = value; }
-        public int Quantity { get => quantity; set => quantity = value; }
-        public double SubTotal { get => subTotal; set => subTotal = value; }
-        public double Tax { get => tax; set => tax = value; }
-        public double GrandTotal { get => grandTotal; set => grandTotal = value; }
         public Dictionary<string, int> Rec { get => rec; set => rec = value; }
 
         public static double GetGrandTotal(double subTotal, double tax)
         {
-            return subTotal + tax;
+            double grandTotal = subTotal + tax;
+            return grandTotal;
         }
 
         public static double GetTax(double subTotal)
@@ -44,10 +27,16 @@ namespace POS_Terminal
             return tax;
         }
 
-        public static double GetSubTotal(double subTotal)
+        public Dictionary<string, int> AddToCart(string item, int qty)
         {
-          
-            return subTotal;
+            rec.Add(item, qty);
+            return rec;
+        }
+
+        public Dictionary<string, int> RemoveFromCart(string item)
+        {
+            rec.Remove(item);
+            return rec;
         }
 
     }

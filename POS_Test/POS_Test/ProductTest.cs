@@ -7,19 +7,23 @@ namespace POS_Test
 {
     public class ProductTest
     {
+
+        //--------------------------------------------------------------------------------
+        //---------------------------------- Product -------------------------------------
+        //--------------------------------------------------------------------------------
         [Fact]
         public void Instantiation()
         {
-
-            Product prod = new Product();
+            Product inv = new Product();
         }
 
         [Fact]
         public void AddProductTest()
         {
-
-            Product prod = new Product("Hamburger", "Food", "8000 calories", 17.99);
-
+            //Arrange
+            //Act
+            //Assert
+            Product product = new Product("Hamburger", "Food", "8000 calories", 17.99);
         }
     }
 }

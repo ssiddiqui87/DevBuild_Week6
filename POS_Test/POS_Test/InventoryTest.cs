@@ -7,32 +7,52 @@ namespace POS_Test
 {
     public class InventoryTest
     {
+
+        //--------------------------------------------------------------------------------
+        //-------------------------------- INVENTORY -------------------------------------
+        //--------------------------------------------------------------------------------
         [Fact]
         public void Instantiation()
         {
-
             Inventory inv = new Inventory();
         }
 
         [Fact]
-        public void AddItemTest()
+        public void AddProductTest()
         {
+            //Arrange
             Dictionary<string, int> inventory = new Dictionary<string, int>();
-            Inventory inv = new Inventory();
             inventory.Add("Hamburger", 120);
+            //Act
+            Inventory inv = new Inventory();
+            //Assert
             Assert.Equal(inventory, inv.AddProduct("Hamburger", 120));
         }
 
         [Fact]
-        public void RemoveItemTest()
+        public void RemoveProductTest()
         {
+            //Arrange
             Dictionary<string, int> inventory = new Dictionary<string, int>();
+            //Act
             Inventory inv = new Inventory();
-            inventory.Add("Hamburger", 119);
-
-            //inventory.Remove("Hamburger");
             inv.AddProduct("Hamburger", 120);
-            Assert.Equal(inventory, inv.RemoveProduct("Hamburger", 1));
+            //Assert
+            Assert.Equal(inventory, inv.RemoveProduct("Hamburger"));
         }
+
+        [Fact]
+        public void RemoveQuantityTest()
+        {
+            //Arrange
+            Dictionary<string, int> inventory = new Dictionary<string, int>();
+            inventory.Add("Hamburger", 119);
+            //Act
+            Inventory inv = new Inventory();
+            inv.AddProduct("Hamburger", 120);
+            //Assert
+            Assert.Equal(inventory, inv.RemoveQuantity("Hamburger", 1));
+        }
+
     }
 }
